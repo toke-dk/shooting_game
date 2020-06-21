@@ -1,4 +1,6 @@
 import pygame
+import time
+# jeg skal lave et spil hvor man skal styre at et rumskib flyver lige
 
 pygame.init()
 width = 800
@@ -9,10 +11,10 @@ win = pygame.display.set_mode([width, height])
 pygame.display.set_caption('Shooting Game')
 
 
-def main():
+def login():
     color = pygame.Color('black')
 
-    username_rect = pygame.Rect(200, 200, 140, 32)
+    username_rect = pygame.Rect(width//4, height//4, 140, 32)
     title_font = pygame.font.Font('freesansbold.ttf', 50)
     base_font = pygame.font.Font(None, 32)
     user_text = ''
@@ -24,6 +26,10 @@ def main():
                 pygame.quit()
                 exit()
             if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    win.fill((0, 0, 0))
+                    pygame.display.update()
+                    run = False
                 if event.key == pygame.K_BACKSPACE:
                     user_text = user_text[:-1]
                 else:
@@ -39,7 +45,20 @@ def main():
         pygame.display.flip()
         clock.tick(60)
     print(user_text)
-base_font = pygame.font.Font(None, 32)
+
+
+def main():
+    login()
+    bg = pygame.image.load("stars.png")
+    run = True
+    win.blit(bg, (0, 0))
+    pygame.display.update()
+    while run:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+
 
 
 main()
