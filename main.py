@@ -1,4 +1,5 @@
 import pygame
+from player import Player
 import time
 
 # jeg skal lave et spil hvor man skal styre at et rumskib flyver lige
@@ -48,25 +49,23 @@ def login():
     print(user_text)
 
 
-def redraw_window(win):
+def redraw_window(win, player):
     bg = pygame.image.load("stars.png")
     win.blit(bg, (0, 0))
-    img = pygame.image.load('space-invaders.png')
-    img = pygame.transform.scale(img, (70, 70))
-    win.blit(img, (width//2 - 70//2, height - 71))
+    player.draw(win)
     pygame.display.update()
-
 
 
 def main():
     # login()
     run = True
+    p = Player(width//2 - 70//2, height - 71, 'space-invaders.png')
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
-        redraw_window(win)
+        redraw_window(win, p)
 
 
 main()
