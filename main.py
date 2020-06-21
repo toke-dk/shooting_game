@@ -48,20 +48,25 @@ def login():
     print(user_text)
 
 
-def main():
-    login()
+def redraw_window(win):
     bg = pygame.image.load("stars.png")
-    run = True
     win.blit(bg, (0, 0))
     img = pygame.image.load('space-invaders.png')
     img = pygame.transform.scale(img, (70, 70))
-    win.blit(img, (width/2, height - 71))
+    win.blit(img, (width//2 - 70//2, height - 71))
     pygame.display.update()
+
+
+
+def main():
+    # login()
+    run = True
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
+        redraw_window(win)
 
 
 main()
