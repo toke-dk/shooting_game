@@ -1,3 +1,6 @@
+# TODO: Jeg skal gøre så man kan opgradere sig til at være hurtigere(vel) i Player
+# TODO: Skal kunne skyde
+# TODO: En modstander skal på skærmen
 import pygame
 from player import Player
 import time
@@ -65,6 +68,7 @@ def main():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
+        p.move()
         redraw_window(win, p)
 
 
