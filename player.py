@@ -6,18 +6,20 @@ from laser import Laser
 
 
 class Player:
-    def __init__(self, x, y, width, height, img):
+    def __init__(self, x, y, width, height, img, rotation):
         self.x = x
         self.y = y
         self.vel = 4
         self.width = width
         self.height = height
         self.img = img
+        self.rotation = rotation
 
     def draw(self, win):
         # think it is wrong here
         img = pygame.image.load(self.img)
         img = pygame.transform.scale(img, (self.width, self.height))
+        img = pygame.transform.rotate(img, self.rotation)
         win.blit(img, (self.x, self.y))
 
     # skal ikke have win
@@ -37,4 +39,5 @@ class Player:
     def update(self, win):
         img = pygame.image.load(self.img)
         img = pygame.transform.scale(img, (self.width, self.height))
+        img = pygame.transform.rotate(img, self.rotation)
         win.blit(img, (self.x, self.y))

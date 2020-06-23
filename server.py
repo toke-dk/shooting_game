@@ -2,9 +2,10 @@ from _thread import *
 import socket
 from player import Player
 import pickle
-
+#skole: MKS
+server = '10.120.0.238'
 # freenet
-server = '192.168.1.185'
+#server = '192.168.1.185'
 port = 5050
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -18,7 +19,7 @@ except socket.error as e:
 s.listen(2)
 print('Waiting for connection, Server started')
 
-players = [Player(0, 0, 70, 70, 'space-invaders.png'), Player(200, 200, 70, 70, 'space-invaders.png')]
+players = [Player(0, 0, 70, 70, 'space-invaders.png', 180), Player(200, 200, 70, 70, 'space-invaders.png', 0)]
 
 
 def thread_client(conn, player):
