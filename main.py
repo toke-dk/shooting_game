@@ -3,6 +3,8 @@
 # TODO: En modstander skal på skærmen
 import pygame
 from player import Player
+from laser import Laser
+from network import Network
 import time
 
 # jeg skal lave et spil hvor man skal styre at et rumskib flyver lige
@@ -52,24 +54,35 @@ def login():
     print(user_text)
 
 
-def redraw_window(win, player):
+def redraw_window(win, player, playre2):
     bg = pygame.image.load("stars.png")
-    win.blit(bg, (0, 0))
     player.draw(win)
+    # laser.draw(win)
+    win.blit(bg, (0, 0))
     pygame.display.update()
 
 
 def main():
     # login()
+    laser_x = 1
+    laser_y = 500
     run = True
-    p = Player(width//2 - 70//2, height - 71, 'space-invaders.png')
+    n = Network()
+    p = n.get_p()
+    # player = Player(width//2 - 70//2, height - 71)
+    # laser = Laser(10, 10)
+    clock = pygame.time.Clock()
     while run:
+        clock.tick(60)
+        # _ that line is wrong
+        p2 = n.send(p)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
-        p.move()
-        redraw_window(win, p)
+        p.move(win)
+        pygame.display.update()
+        redraw_window(win, p, p2)
 
 
 main()
