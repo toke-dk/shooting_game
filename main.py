@@ -10,12 +10,18 @@ import time
 # jeg skal lave et spil hvor man skal styre at et rumskib flyver lige
 
 pygame.init()
-width = 800
-height = 600
+width = 1600
+height = 1200
 # WINDOW
 win = pygame.display.set_mode([width, height])
 # 'TITLE'
 pygame.display.set_caption('Shooting Game')
+
+print('Shooy')
+pygame.display.update()
+
+
+# blit window
 
 
 def login():
@@ -54,12 +60,15 @@ def login():
     print(user_text)
 
 
-def redraw_window(win, player, playre2):
+def redraw_window(win, player, playre2, laser):
     bg = pygame.image.load("stars.png")
+    bg = pygame.transform.scale(bg, (2000, 2000))
     win.blit(bg, (0, 0))
+    # laser_img = pygame.image.load('laser.png')
+    # laser_img = pygame.transform.scale(laser_img, (30, 60))
+    # win.blit(laser_img, (3, 3))
     player.draw(win)
     playre2.draw(win)
-    # laser.draw(win)
     pygame.display.update()
 
 
@@ -67,6 +76,7 @@ def main():
     # login()
     laser_x = 1
     laser_y = 500
+    l = Laser()
     run = True
     n = Network()
     p = n.get_p()
@@ -82,7 +92,7 @@ def main():
                 pygame.quit()
                 exit()
         p.move(win)
-        redraw_window(win, p, p2)
+        redraw_window(win, p, p2, l)
 
 
 main()
