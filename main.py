@@ -56,9 +56,10 @@ def login():
 
 def redraw_window(win, player, playre2):
     bg = pygame.image.load("stars.png")
-    player.draw(win)
-    # laser.draw(win)
     win.blit(bg, (0, 0))
+    player.draw(win)
+    playre2.draw(win)
+    # laser.draw(win)
     pygame.display.update()
 
 
@@ -81,7 +82,6 @@ def main():
                 pygame.quit()
                 exit()
         p.move(win)
-        pygame.display.update()
         redraw_window(win, p, p2)
 
 
