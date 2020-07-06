@@ -1,6 +1,7 @@
 # TODO: Jeg skal gøre så man kan opgradere sig til at være hurtigere(vel) i Player
 # TODO: Skal kunne skyde
 # TODO: En modstander skal på skærmen
+# TODO: liv og levels
 import pygame
 from player import Player
 from laser import Laser
@@ -60,7 +61,7 @@ def login():
     print(user_text)
 
 
-def redraw_window(win, player, playre2, laser):
+def redraw_window(win, player, player2):
     bg = pygame.image.load("stars.png")
     bg = pygame.transform.scale(bg, (2000, 2000))
     win.blit(bg, (0, 0))
@@ -68,15 +69,12 @@ def redraw_window(win, player, playre2, laser):
     # laser_img = pygame.transform.scale(laser_img, (30, 60))
     # win.blit(laser_img, (3, 3))
     player.draw(win)
-    playre2.draw(win)
+    player2.draw(win)
     pygame.display.update()
 
 
 def main():
     # login()
-    laser_x = 1
-    laser_y = 500
-    l = Laser()
     run = True
     n = Network()
     p = n.get_p()
@@ -92,7 +90,7 @@ def main():
                 pygame.quit()
                 exit()
         p.move(win)
-        redraw_window(win, p, p2, l)
+        redraw_window(win, p, p2)
 
 
 main()

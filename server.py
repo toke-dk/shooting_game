@@ -8,7 +8,9 @@ screen_height = 1200
 # skole: MKS
 #server = '10.120.0.238'
 # freenet
-server = '192.168.1.185'
+# server = '192.168.1.185'
+# RK11 (Tokes værelse)
+server = '192.168.0.111'
 port = 5050
 
 

@@ -15,7 +15,6 @@ class Player:
         self.height = height
         self.img = img
         self.rotation = rotation
-        self.l = Laser()
 
     def draw(self, win):
         # think it is wrong here
@@ -26,6 +25,7 @@ class Player:
 
     # skal ikke have win
     def move(self, win):
+        self.l = Laser(self.x, self.y)
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
             self.x -= self.vel
@@ -33,13 +33,11 @@ class Player:
             self.x += self.vel
         if keys[pygame.K_SPACE]:
             print('presesd space')
-            Laser().draw(win)
+            self.l.draw(win)
             # if keys[pygame.K_UP]:
             #     print('Key_UP')
             #     l.draw(win)
         self.update(win)
-
-    # det hakker fordi den blit
 
     def update(self, win):
         img = pygame.image.load(self.img)
